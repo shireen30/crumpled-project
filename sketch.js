@@ -23,15 +23,14 @@ function setup() {
     restitution:0.3,
     friction:0,
     density:1.2,
-    color: "red",
-    restitution: 0.9
+   
   }
 	//Create the Bodies Here.
-  ball = Bodies.circle(500,100,100,ball_options);
+  ball = Bodies.circle(500,100,20,ball_options);
   World.add(world,ball);
   myground = new ground(width/2,670,width,20);
   leftside = new ground( 1100,600,20,120);
-	Engine.run(Engine);
+	Engine.run(engine);
   
 }
 
@@ -39,22 +38,22 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  
+  // Engine.update(engine);
   fill("#FFFF");
   textAlign("center");
   textSize(40);
   text("CRUMPLED PAPER BALLS", width / 2, 100);
-  ellipse(ball.position.x,ball.position.y,20);
+  ellipse(ball.position.x,ball.position.y,2*20);
   myground.display();
   leftside.display();
   drawSprites();
-  Engine.update(engine);
+
  
 }
 function keyPressed(){
 	if(keyCode === UP_ARROW){
 		
-		Matter.Body.applyForce(ball,{x:0,y:0},{x:0,y:-0.05})
+		Matter.Body.applyForce(ball,{x:0,y:0},{x:85,y:-85})
 	}
 }
 
